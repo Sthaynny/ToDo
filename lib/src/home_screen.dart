@@ -1,4 +1,8 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:to_do/src/models/todo_model.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,7 +15,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final _toDoController = TextEditingController();
 
-  final List<TodoModel> _toDoList = [];
+  List<TodoModel> _toDoList = [];
 
   final List<TodoModel> _ultimosRemovidos = [];
   int? _ultimoRemovidoPosicao;
@@ -20,13 +24,17 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
 
-    // _readData().then((data) {
-    //   if (data != null) {
-    //     setState(() {
-    //       _toDoList = json.decode(data);
-    //     });
-    //   }
-    // });
+    _readData().then((data) {
+      if (data != null) {
+        setState(() {
+          final List dados = json.decode(data);
+          _toDoList = List.generate(
+            dados.length,
+            (index) => TodoModel.fromMap(dados[index]),
+          );
+        });
+      }
+    });
   }
 
   void _addToDo() {
@@ -36,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       _toDoList.add(newToDo);
 
-      // _saveData();
+      _saveData();
     });
   }
 
@@ -54,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
         }
       });
 
-      // _saveData();
+      _saveData();
     });
   }
 
@@ -120,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onChanged: (c) {
           setState(() {
             _toDoList[index].finalizado = c ?? false;
-            // _saveData();
+            _saveData();
           });
         },
       ),
@@ -130,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
           _ultimoRemovidoPosicao = index;
           _toDoList.removeAt(index);
 
-          // _saveData();
+          _saveData();
 
           final snack = SnackBar(
             content: Text(
@@ -160,25 +168,25 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // Future<File> _getFile() async {
-  //   final directory = await getApplicationDocumentsDirectory();
-  //   return File("${directory.path}/data.json");
-  // }
+  Future<File> _getFile() async {
+    final directory = await getApplicationDocumentsDirectory();
+    return File("${directory.path}/data.json");
+  }
 
-  // Future<File> _saveData() async {
-  //   String data = json.encode(_toDoList);
+  Future<File> _saveData() async {
+    String data = json.encode(_toDoList.map((e) => e.toMap()).toList());
 
-  //   final file = await _getFile();
-  //   return file.writeAsString(data);
-  // }
+    final file = await _getFile();
+    return file.writeAsString(data);
+  }
 
-  // Future<String?> _readData() async {
-  //   try {
-  //     final file = await _getFile();
+  Future<String?> _readData() async {
+    try {
+      final file = await _getFile();
 
-  //     return file.readAsString();
-  //   } catch (e) {
-  //     return null;
-  //   }
-  // }
+      return file.readAsString();
+    } catch (e) {
+      return null;
+    }
+  }
 }
