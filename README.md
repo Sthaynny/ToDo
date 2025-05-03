@@ -1,8 +1,9 @@
 <p align="center">
-   <img src="https://github.com/user-attachments/assets/eb1a85c5-b298-4323-b55d-d37b915a6517" alt="app" width="200"/>
-</p>
+   <img src="https://github.com/user-attachments/assets/d857fd3b-2a76-4266-bbae-f8c73bd95456" alt="app" width="200"/>
+</p> 
 
-<h1 align="center">Nome do projeto</h1>
+
+<h1 align="center">Todo app</h1>
 
 <p align="center">
    <a href="https://www.linkedin.com/in/igor-sthaynny/">
@@ -17,7 +18,7 @@
   </a>
 </p>
 
-<p align="center">Breve descricao do projeto</p>
+<p align="center">Aplicação criada para o mini curso do Ecop, Flutter Express</p>
 
 <hr />
 
@@ -31,26 +32,10 @@
 
 - [📌 Contents](#-contents)
 - [:camera: Screenshots](#camera-screenshots)
-- [:rocket: Tecnologias](#rocket-tecnologias)
 - [:computer: Como rodar](#computer-como-rodar)
 - [:bug: Issues](#bug-issues)
 - [:sparkles: Contribuição](#sparkles-contribuição)
 - [:page_facing_up: Licença](#page_facing_up-licença)
-
-# :camera: Screenshots
-<div align="center">
-   <img src="https://user-images.githubusercontent.com/46109133/155231022-7d54b0eb-a0c5-4e60-a244-3e5c30fc9373.jpeg" width="230"/>
-   <img src="https://user-images.githubusercontent.com/46109133/155231022-7d54b0eb-a0c5-4e60-a244-3e5c30fc9373.jpeg" width="230"/>
-   <img src="https://user-images.githubusercontent.com/46109133/155231022-7d54b0eb-a0c5-4e60-a244-3e5c30fc9373.jpeg" width="230"/>
-
-</div>
-  
-
-
-# :rocket: Tecnologias
-Esse:
-
-Descreva as tecnologias usadas aqui
 
 # :computer: Como rodar
 
